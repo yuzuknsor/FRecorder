@@ -23,7 +23,10 @@ android {
 
 	def keystorePropertiesFile = rootProject.file("keystore.properties")
 	def keystoreProperties = new Properties()
-	keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+	def hasKeystore = keystorePropertiesFile.exists()
+	if (hasKeystore) {
+		keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+	}
 
 	signingConfigs {
 		dev {
@@ -33,10 +36,12 @@ android {
 			keyPassword 'android'
 		}
 		release {
-			storeFile file(keystoreProperties['prodStoreFile'])
-			storePassword keystoreProperties['prodStorePassword']
-			keyAlias keystoreProperties['prodKeyAlias']
-			keyPassword keystoreProperties['prodKeyPassword']
+			if (hasKeystore) {
+				storeFile file(keystoreProperties['prodStoreFile'])
+				storePassword keystoreProperties['prodStorePassword']
+				keyAlias keystoreProperties['prodKeyAlias']
+				keyPassword keystoreProperties['prodKeyPassword']
+			}
 		}
 	}
 

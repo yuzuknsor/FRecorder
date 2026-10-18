@@ -54,6 +54,8 @@ import com.vdo.frecorder.app.info.ActivityInformation;
 import com.vdo.frecorder.app.info.RecordInfo;
 import com.vdo.frecorder.app.moverecords.MoveRecordsActivity;
 import com.vdo.frecorder.app.records.RecordsActivity;
+import com.vdo.frecorder.app.shortcuts.AppShortcuts;
+import com.vdo.frecorder.app.quickmic.QuickMicActivity;
 import com.vdo.frecorder.app.settings.SettingsActivity;
 import com.vdo.frecorder.app.welcome.WelcomeActivity;
 import com.vdo.frecorder.app.widget.RecordingWaveformView;
@@ -293,17 +295,30 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 		};
 		colorMap.addOnThemeColorChangeListener(onThemeColorChangeListener);
 
-		//Check start recording shortcut
-		if ("android.intent.action.ACTION_RUN".equals(getIntent().getAction())) {
-			if (checkRecordPermission2()) {
-				if (checkStoragePermission2()) {
-					//Start or stop recording
-					startRecordingService();
-				}
-			}
-		}
+		// 快捷方式（开始录制 / 内置麦克风）
+		AppShortcuts.refresh(this);
+		handleShortcutIntent(getIntent());
 		checkNotificationPermission();
 		checkRecordPermission2();
+	}
+
+	private void handleShortcutIntent(Intent intent) {
+		if (intent == null) {
+			return;
+		}
+		String action = intent.getAction();
+		if (AppShortcuts.ACTION_RUN.equals(action)) {
+			if (checkRecordPermission2() && checkStoragePermission2()) {
+				startRecordingService();
+			}
+		} else if (QuickMicActivity.ACTION_QUICK_RECORD.equals(action)) {
+			Intent quickMic = new Intent(this, QuickMicActivity.class);
+			quickMic.setAction(QuickMicActivity.ACTION_QUICK_RECORD);
+			quickMic.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+			startActivity(quickMic);
+		}
+		// 消费掉，避免屏幕旋转重建时重复触发
+		intent.setAction(null);
 	}
 
 	@Override
@@ -311,11 +326,7 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 		super.onNewIntent(intent);
 		setIntent(intent);
 		// 快捷方式在应用已打开时不会走 onCreate，必须在这里处理
-		if ("android.intent.action.ACTION_RUN".equals(intent.getAction())) {
-			if (checkRecordPermission2() && checkStoragePermission2()) {
-				startRecordingService();
-			}
-		}
+		handleShortcutIntent(intent);
 	}
 
 	@Override
