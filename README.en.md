@@ -25,8 +25,8 @@
 
 ## Credits
 
-- FRecorder is based on [Audio Recorder](https://github.com/Dimowner/AudioRecorder) by Dmytro Ponomarenko.
-- This fork is based on [vdo/FRecorder](https://github.com/vdo/FRecorder).
+- **Direct upstream**: [vdo/FRecorder](https://github.com/vdo/FRecorder) — the entire baseline of this fork comes from that project; thanks to its maintainer.
+- Original project: FRecorder is based on [Audio Recorder](https://github.com/Dimowner/AudioRecorder) by Dmytro Ponomarenko.
 
 ## License
 
