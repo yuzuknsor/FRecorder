@@ -52,6 +52,9 @@ import com.vdo.frecorder.util.TimeUtils;
 public class QuickMicActivity extends Activity implements View.OnClickListener {
 
 	private static final int REQ_CODE_RECORD_AUDIO = 512;
+	public static final String ACTION_QUICK_RECORD = "com.vdo.frecorder.action.QUICK_MIC_RECORD";
+
+	private boolean autoStartPending;
 
 	private TextView txtDevice;
 	private TextView txtStatus;
@@ -92,6 +95,17 @@ public class QuickMicActivity extends Activity implements View.OnClickListener {
 		findViewById(R.id.btn_back).setOnClickListener(this);
 		btnToggle.setOnClickListener(this);
 		findViewById(R.id.btn_view_records).setOnClickListener(this);
+
+		autoStartPending = ACTION_QUICK_RECORD.equals(getIntent().getAction());
+	}
+
+	@Override
+	protected void onNewIntent(Intent intent) {
+		super.onNewIntent(intent);
+		setIntent(intent);
+		if (ACTION_QUICK_RECORD.equals(intent.getAction())) {
+			autoStartPending = true;
+		}
 	}
 
 	@Override
@@ -100,6 +114,17 @@ public class QuickMicActivity extends Activity implements View.OnClickListener {
 		showDeviceInfo();
 		updateState();
 		handler.post(ticker);
+
+		if (autoStartPending) {
+			autoStartPending = false;
+			if (appRecorder == null || !appRecorder.isRecording()) {
+				if (hasRecordPermission()) {
+					startRecording();
+				} else {
+					requestRecordPermission();
+				}
+			}
+		}
 	}
 
 	@Override

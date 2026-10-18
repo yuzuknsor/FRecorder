@@ -159,6 +159,7 @@ public class SettingsActivity extends Activity implements SettingsContract.View,
 		txtAbout.setText(getAboutContent());
 		findViewById(R.id.btnTrash).setOnClickListener(this);
 		findViewById(R.id.btnCredits).setOnClickListener(this);
+		findViewById(R.id.btnQuickMic).setOnClickListener(this);
 		panelPublicDir = findViewById(R.id.panelPublicDir);
 		txtFileBrowser = findViewById(R.id.btn_file_browser);
 		txtFileBrowser.setOnClickListener(this);

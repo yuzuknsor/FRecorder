@@ -29,6 +29,8 @@
     </plurals>
     <string name="start_recording">开始录制</string>
     <string name="recording_feature_disabled">录制功能已禁用</string>
+    <string name="shortcut_quick_mic_short">内置麦克风</string>
+    <string name="shortcut_quick_mic_long">内置麦克风快速录制</string>
     <string name="restore_record">恢复录音 %s？</string>
     <string name="delete_all_records">删除所有录音？</string>
     <string name="all_records_deleted">所有录音已删除</string>

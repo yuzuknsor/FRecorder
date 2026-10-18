@@ -307,6 +307,18 @@ public class MainActivity extends Activity implements MainContract.View, View.On
 	}
 
 	@Override
+	protected void onNewIntent(Intent intent) {
+		super.onNewIntent(intent);
+		setIntent(intent);
+		// 快捷方式在应用已打开时不会走 onCreate，必须在这里处理
+		if ("android.intent.action.ACTION_RUN".equals(intent.getAction())) {
+			if (checkRecordPermission2() && checkStoragePermission2()) {
+				startRecordingService();
+			}
+		}
+	}
+
+	@Override
 	protected void onStart() {
 		super.onStart();
 		presenter.bindView(this);

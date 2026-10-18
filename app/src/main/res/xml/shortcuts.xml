@@ -12,4 +12,16 @@
 				android:targetClass="com.vdo.frecorder.app.main.MainActivity"
 				android:targetPackage="com.vdo.frecorder" />
 	</shortcut>
+	<shortcut
+			android:enabled="true"
+			android:icon="@drawable/ic_mic_boost"
+			android:shortcutDisabledMessage="@string/recording_feature_disabled"
+			android:shortcutId="quick_mic"
+			android:shortcutLongLabel="@string/shortcut_quick_mic_long"
+			android:shortcutShortLabel="@string/shortcut_quick_mic_short">
+		<intent
+				android:action="com.vdo.frecorder.action.QUICK_MIC_RECORD"
+				android:targetClass="com.vdo.frecorder.app.quickmic.QuickMicActivity"
+				android:targetPackage="com.vdo.frecorder" />
+	</shortcut>
 </shortcuts>
