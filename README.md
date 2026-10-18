@@ -6,7 +6,10 @@
 
 **FRecorder** 是一款快速、直接的 Android 外景录音应用。
 
-<img src="shot.jpg" width="300" alt="FRecorder 界面截图"/>
+<p align="center">
+  <img src="shot.jpg" width="300" alt="FRecorder 界面截图"/>
+  <img src="shot-quick-mic.jpg" width="300" alt="内置麦克风快捷录音"/>
+</p>
 
 ## 改动
 

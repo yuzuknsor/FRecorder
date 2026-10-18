@@ -6,7 +6,10 @@
 
 **FRecorder** is a fast, straightforward Android field recorder.
 
-<img src="shot.jpg" width="300" alt="FRecorder screenshot"/>
+<p align="center">
+  <img src="shot.jpg" width="300" alt="FRecorder screenshot"/>
+  <img src="shot-quick-mic.jpg" width="300" alt="Quick record with built-in mic"/>
+</p>
 
 ## Changes
 
