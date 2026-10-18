@@ -200,7 +200,10 @@
 
     <string name="quick_mic_entry">内置麦克风快速录制</string>
     <string name="quick_mic_title">内置麦克风</string>
-    <string name="quick_mic_description">始终使用手机内置麦克风录音，忽略设置里选定的音频输入。适合一边用 USB-C 耳机或小尾巴听歌、一边用手机麦克风录音，避免系统把录音路由到耳机线上的麦克风。</string>
+    <string name="quick_mic_description">始终使用手机内置麦克风，
+避免使用耳机上的麦克风。
+如果耳机本就没有麦克风，
+那就更合适了。</string>
     <string name="quick_mic_device">录音输入: %s</string>
     <string name="quick_mic_device_missing">系统没有报告内置麦克风，将退回系统默认输入。</string>
     <string name="quick_mic_start">开始录制</string>

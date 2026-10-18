@@ -14,18 +14,24 @@
   ~  See the License for the specific language governing permissions and
   ~  limitations under the License.
   -->
+<!--
+  布局说明（黄金分割）：
+  计时器中心落在约 38.2% 高度，主按钮中心落在约 61.8% 高度。
+  用三段弹性留白实现，权重 0.382 / 0.236 / 0.382（和为 1）。
+-->
 <ScrollView
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:tools="http://schemas.android.com/tools"
 		tools:viewBindingIgnore="true"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
+		android:fillViewport="true"
 		android:fitsSystemWindows="true">
 
 	<LinearLayout
 			android:orientation="vertical"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content">
+			android:layout_height="match_parent">
 
 		<LinearLayout
 				android:id="@+id/toolbar"
@@ -51,41 +57,56 @@
 					android:gravity="center_vertical"
 					android:paddingStart="@dimen/spacing_normal"
 					android:paddingEnd="@dimen/spacing_normal"
-					android:textColor="@color/text_primary_light"
+					android:textColor="?android:attr/textColorPrimary"
 					android:text="@string/quick_mic_title"/>
 		</LinearLayout>
 
 		<TextView
+				android:id="@+id/txt_description"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="@dimen/spacing_normal"
-				android:layout_marginStart="@dimen/spacing_normal"
-				android:layout_marginEnd="@dimen/spacing_normal"
+				android:layout_marginStart="@dimen/spacing_double"
+				android:layout_marginEnd="@dimen/spacing_double"
+				android:gravity="center"
+				android:lineSpacingExtra="4dp"
 				android:text="@string/quick_mic_description"
 				android:textSize="@dimen/text_xmedium"
-				android:textColor="@color/text_secondary_light"/>
+				android:textColor="?android:attr/textColorSecondary"/>
 
 		<TextView
 				android:id="@+id/txt_device"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="@dimen/spacing_medium"
-				android:layout_marginStart="@dimen/spacing_normal"
-				android:layout_marginEnd="@dimen/spacing_normal"
+				android:layout_marginStart="@dimen/spacing_double"
+				android:layout_marginEnd="@dimen/spacing_double"
+				android:gravity="center"
 				android:textSize="@dimen/text_xmedium"
-				android:textColor="@color/text_primary_light"
+				android:textColor="?android:attr/textColorPrimary"
 				tools:text="@string/quick_mic_device"/>
+
+		<!-- 黄金分割：上方留白 -->
+		<Space
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_weight="0.382"/>
 
 		<TextView
 				android:id="@+id/txt_status"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="@dimen/spacing_double"
 				android:gravity="center"
 				android:fontFamily="sans-serif-light"
 				android:textSize="34sp"
-				android:textColor="@color/text_primary_light"
+				android:textColor="?android:attr/textColorPrimary"
 				android:text="@string/zero_time"/>
+
+		<!-- 计时器与按钮之间留白 -->
+		<Space
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_weight="0.236"/>
 
 		<TextView
 				android:id="@+id/btn_toggle"
@@ -93,24 +114,31 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_gravity="center_horizontal"
-				android:layout_marginTop="@dimen/spacing_medium"
-				android:minWidth="200dp"
+				android:minWidth="220dp"
+				android:minHeight="56dp"
+				android:gravity="center"
 				android:drawableStart="@drawable/ic_record"
 				android:drawablePadding="@dimen/spacing_normal"
 				android:textSize="@dimen/text_large"
 				android:text="@string/quick_mic_start"/>
+
+		<!-- 按钮下方留白 -->
+		<Space
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_weight="0.382"/>
 
 		<TextView
 				android:id="@+id/btn_view_records"
 				style="@style/Text.NormalLabel"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="@dimen/spacing_double"
 				android:text="@string/view_records"
+				android:gravity="center_vertical"
 				android:drawableStart="@drawable/ic_list"
 				android:background="?android:selectableItemBackground"
-				android:paddingStart="@dimen/spacing_normal"
-				android:paddingEnd="@dimen/spacing_normal"
+				android:paddingStart="@dimen/spacing_double"
+				android:paddingEnd="@dimen/spacing_double"
 				android:paddingTop="@dimen/spacing_medium"
 				android:paddingBottom="@dimen/spacing_medium"
 				android:drawablePadding="@dimen/spacing_normal"/>
