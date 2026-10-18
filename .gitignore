@@ -7,3 +7,7 @@
 /captures
 .externalNativeBuild
 CLAUDE.md
+
+# signing secrets - never commit
+keystore.properties
+app/key/debug/*.keystore
