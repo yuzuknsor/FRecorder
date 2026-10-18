@@ -13,7 +13,7 @@
 
 ## Changes
 
-- **Explicit built-in microphone selection** — the audio input list now includes every input reported by the system.
+- **Explicit audio input selection** — the audio input list now includes every input reported by the system.
 - **Quick built-in-mic recording** — app-icon long-press entry (Settings → *Quick record with built-in microphone*), records with the built-in mic right away.
 - **Full Simplified Chinese localization** — every string translated.
 - **Reworked the howling-risk check for an explicitly selected built-in microphone**
