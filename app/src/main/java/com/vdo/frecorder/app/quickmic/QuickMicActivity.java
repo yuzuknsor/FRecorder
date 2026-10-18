@@ -31,6 +31,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vdo.frecorder.ARApplication;
+import com.vdo.frecorder.ColorMap;
 import com.vdo.frecorder.R;
 import com.vdo.frecorder.app.AppRecorder;
 import com.vdo.frecorder.app.RecordingService;
@@ -82,6 +83,9 @@ public class QuickMicActivity extends Activity implements View.OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		// 跟随应用内统一配色（ColorMap），否则这个界面会用默认主题
+		ColorMap colorMap = ARApplication.getInjector().provideColorMap(getApplicationContext());
+		setTheme(colorMap.getAppThemeResource());
 		setContentView(R.layout.activity_quick_mic);
 
 		appRecorder = ARApplication.getInjector().provideAppRecorder(getApplicationContext());
