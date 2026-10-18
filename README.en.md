@@ -12,6 +12,7 @@
 
 - **Explicit built-in microphone selection** — the audio input list now includes every input reported by the system, instead of USB / wired devices only. Selecting the built-in mic explicitly calls `AudioRecord.setPreferredDevice()`, overriding the system's source routing.
 - **Quick built-in-mic recording** — a standalone screen (Settings → *Quick record with built-in microphone*) that ignores the saved audio input preference and always records from the phone's own mic. Also reachable from the app-icon long-press shortcut.
+- **Launcher shortcuts** — long-press the app icon to start recording, or to record with the built-in microphone directly. Registered at runtime, so they work in both debug and release builds.
 - **Full Simplified Chinese localization** — every string translated.
 - **Reworked the howling-risk check for an explicitly selected built-in microphone**
 
