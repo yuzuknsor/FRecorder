@@ -4,7 +4,7 @@
 
 <p align="center"> <img src="logo.svg" width="128" alt="FRecorder logo"/> </p>
 
-**FRecorder** is a fast, straightforward Android field recorder — comfortable for recording thoughts and quick notes, and capable of some light professional work.
+**FRecorder** is a fast, straightforward field recorder — comfortable for recording thoughts and quick notes, and capable of some light professional work.
 
 <p align="center">
   <img src="shot.jpg" width="300" alt="FRecorder screenshot"/>
