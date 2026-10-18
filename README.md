@@ -10,6 +10,13 @@ Fork of [Dimowner/AudioRecorder](https://github.com/Dimowner/AudioRecorder) with
 
 <img src="shot.jpg" width="300" alt="FRecorder screenshot"/>
 
+## Changes in this fork (KNSOR's build)
+
+- **Explicit built-in microphone selection** — the audio input list now contains every input the system reports, built-in microphones first (with their physical address appended when the framework provides one), instead of only USB / wired devices. Selecting a built-in mic explicitly calls `AudioRecord.setPreferredDevice()` with that device, which overrides the system's source routing. This is what lets the phone record from its own mic while a USB-C headset or audio dongle is plugged in — otherwise recording silently lands on the dongle's (often non-existent) headset microphone.
+- **Quick record with built-in mic** — a dedicated screen (Settings → *Quick record with built-in microphone*) that always records from the phone mic, ignoring the saved audio input preference. It uses a one-shot device override (`RecordingDeviceOverride`) that `RecordingService` consumes and discards, so normal recordings keep using the configured device.
+- **Complete Simplified Chinese localization** — every string translated, including the audio-FX, monitoring and noise-reduction settings added in this fork.
+- **Feedback-risk check fixed** for explicitly selected built-in mics (previously any non-null device was treated as "external, no feedback risk").
+
 ## Features
 
 - **USB Audio Input** — Record from external USB microphones, audio interfaces, and other USB audio devices. Automatically detects connected devices and lets you select them as the recording source. Use a USB audio interface like the Rode AI-Micro or a TRS-to-USB-C adapter like the BOYA BY-K4 to plug in contact mics, lavaliers, or any standard 3.5mm audio source.

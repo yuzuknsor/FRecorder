@@ -67,6 +67,9 @@
             android:name=".app.settings.SettingsActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".app.quickmic.QuickMicActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".app.info.ActivityInformation"
             android:screenOrientation="portrait" />
         <activity

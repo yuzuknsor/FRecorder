@@ -47,6 +47,7 @@ import com.vdo.frecorder.ColorMap;
 import com.vdo.frecorder.R;
 import com.vdo.frecorder.app.main.MainActivity;
 import com.vdo.frecorder.audio.AudioDeviceManager;
+import com.vdo.frecorder.audio.RecordingDeviceOverride;
 import com.vdo.frecorder.audio.player.AudioPlayerNew;
 import com.vdo.frecorder.audio.player.PlayerContractNew;
 import com.vdo.frecorder.audio.recorder.RecorderContract;
@@ -435,14 +436,20 @@ public class RecordingService extends Service {
 						audioPlayer.stop();
 					}
 
-					// Get selected audio device
-					int selectedDeviceId = prefs.getSettingAudioSource();
+					// Get selected audio device. A one-shot override (quick record
+					// with built-in mic) wins over the saved preference.
+					int forcedDeviceId = RecordingDeviceOverride.consume();
+					int selectedDeviceId = (forcedDeviceId != RecordingDeviceOverride.NONE)
+							? forcedDeviceId
+							: prefs.getSettingAudioSource();
 					AudioDeviceInfo audioDevice = null;
 					if (selectedDeviceId != AppConstants.AUDIO_SOURCE_DEFAULT_MIC && audioDeviceManager != null) {
 						audioDevice = audioDeviceManager.getDeviceById(selectedDeviceId);
 						if (audioDevice == null) {
 							// Device no longer available, reset to default
-							prefs.setSettingAudioSource(AppConstants.AUDIO_SOURCE_DEFAULT_MIC);
+							if (forcedDeviceId == RecordingDeviceOverride.NONE) {
+								prefs.setSettingAudioSource(AppConstants.AUDIO_SOURCE_DEFAULT_MIC);
+							}
 							Timber.w("Selected audio device not available, using default microphone");
 						}
 					}

@@ -25,6 +25,8 @@ import android.media.AudioRecord;
 import android.media.AudioTrack;
 import android.media.MediaRecorder;
 
+import com.vdo.frecorder.audio.AudioDeviceManager;
+
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -681,8 +683,10 @@ public class AudioMonitor {
     public boolean hasFeedbackRisk(AudioDeviceInfo inputDevice) {
         if (appContext == null) return false;
 
-        // If an external input device is selected, the mic won't pick up speaker output
-        if (inputDevice != null) return false;
+        // If an external input device is selected, the mic won't pick up speaker output.
+        // A built-in mic explicitly selected is still a feedback risk, so it falls through
+        // to the output-device check below.
+        if (inputDevice != null && AudioDeviceManager.isExternalInputDevice(inputDevice)) return false;
 
         // Check if the only available output is the built-in speaker
         AudioManager audioManager = (AudioManager) appContext.getSystemService(Context.AUDIO_SERVICE);

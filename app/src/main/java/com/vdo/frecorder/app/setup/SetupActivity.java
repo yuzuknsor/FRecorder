@@ -265,8 +265,8 @@ public class SetupActivity extends Activity implements SetupContract.View, View.
 		deviceNames.add(getString(R.string.audio_source_default_mic));
 
 		for (AudioDeviceInfo device : availableAudioDevices) {
-			deviceNames.add(AudioDeviceManager.getDeviceDisplayName(device) +
-					" (" + AudioDeviceManager.getDeviceTypeString(device) + ")");
+			deviceNames.add(AudioDeviceManager.getDeviceDisplayName(this, device) +
+					" (" + AudioDeviceManager.getDeviceTypeString(this, device) + ")");
 		}
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<>(this,

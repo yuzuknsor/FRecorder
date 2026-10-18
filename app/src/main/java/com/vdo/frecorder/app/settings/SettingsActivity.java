@@ -48,6 +48,7 @@ import com.vdo.frecorder.ColorMap;
 import com.vdo.frecorder.R;
 import com.vdo.frecorder.app.browser.FileBrowserActivity;
 import com.vdo.frecorder.app.moverecords.MoveRecordsActivity;
+import com.vdo.frecorder.app.quickmic.QuickMicActivity;
 import com.vdo.frecorder.app.trash.TrashActivity;
 import com.vdo.frecorder.app.widget.SettingView;
 import com.vdo.frecorder.audio.AudioDeviceManager;
@@ -422,6 +423,8 @@ public class SettingsActivity extends Activity implements SettingsContract.View,
 			presenter.loadSettings();
 		} else if (id == R.id.btnCredits) {
 			showCreditsDialog();
+		} else if (id == R.id.btnQuickMic) {
+			startActivity(QuickMicActivity.getStartIntent(getApplicationContext()));
 		}
 	}
 
@@ -484,8 +487,8 @@ public class SettingsActivity extends Activity implements SettingsContract.View,
 		int selectedPosition = 0;
 		for (int i = 0; i < devices.size(); i++) {
 			AudioDeviceInfo device = devices.get(i);
-			deviceNames.add(AudioDeviceManager.getDeviceDisplayName(device) +
-					" (" + AudioDeviceManager.getDeviceTypeString(device) + ")");
+			deviceNames.add(AudioDeviceManager.getDeviceDisplayName(this, device) +
+					" (" + AudioDeviceManager.getDeviceTypeString(this, device) + ")");
 			if (device.getId() == selectedDeviceId) {
 				selectedPosition = i + 1;
 			}

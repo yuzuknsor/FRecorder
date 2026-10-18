@@ -417,6 +417,22 @@
 				<!--/>-->
 
 		<TextView
+				android:id="@+id/btnQuickMic"
+				style="@style/Text.NormalLabel"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/quick_mic_entry"
+				android:drawableStart="@drawable/ic_mic_boost"
+				android:background="?android:selectableItemBackground"
+				android:layout_marginTop="@dimen/spacing_small"
+				android:paddingStart="@dimen/spacing_normal"
+				android:paddingEnd="@dimen/spacing_normal"
+				android:paddingTop="@dimen/spacing_medium"
+				android:paddingBottom="@dimen/spacing_medium"
+				android:drawablePadding="@dimen/spacing_normal"
+				/>
+
+		<TextView
 				android:id="@+id/btnCredits"
 				style="@style/Text.NormalLabel"
 				android:layout_width="match_parent"
