@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-package com.vdo.frecorder.exception;
+package com.vdo.frecorder.exception
 
-public class PlayerInitException extends AppException {
-	@Override
-	public int getType() {
-		return AppException.PLAYER_INIT_EXCEPTION;
-	}
+/** 录音后处理失败。 */
+class CantProcessRecord : AppException() {
+    override val type: Int
+        get() = AppException.CANT_PROCESS_RECORD
 }

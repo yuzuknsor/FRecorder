@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-package com.vdo.frecorder.exception;
+package com.vdo.frecorder.exception
 
-public class PermissionDeniedException extends AppException {
-	@Override
-	public int getType() {
-		return AppException.READ_PERMISSION_DENIED;
-	}
+/** 缺少读写权限。 */
+class PermissionDeniedException : AppException() {
+    override val type: Int
+        get() = AppException.READ_PERMISSION_DENIED
 }

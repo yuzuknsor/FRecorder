@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-package com.vdo.frecorder.exception;
+package com.vdo.frecorder.exception
 
-public class PlayerDataSourceException extends AppException {
-	@Override
-	public int getType() {
-		return AppException.PLAYER_DATA_SOURCE_EXCEPTION;
-	}
+/** 录音器初始化失败。 */
+class RecorderInitException : AppException() {
+    override val type: Int
+        get() = AppException.RECORDER_INIT_EXCEPTION
 }

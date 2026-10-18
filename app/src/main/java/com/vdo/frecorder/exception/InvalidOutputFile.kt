@@ -14,12 +14,10 @@
  * limitations under the License.
  */
 
-package com.vdo.frecorder.exception;
+package com.vdo.frecorder.exception
 
-public class InvalidOutputFile extends AppException {
-
-	@Override
-	public int getType() {
-		return AppException.INVALID_OUTPUT_FILE;
-	}
+/** 输出文件无效。 */
+class InvalidOutputFile : AppException() {
+    override val type: Int
+        get() = AppException.INVALID_OUTPUT_FILE
 }

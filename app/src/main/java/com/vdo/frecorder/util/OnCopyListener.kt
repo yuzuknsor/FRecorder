@@ -14,16 +14,15 @@
  * limitations under the License.
  */
 
-package com.vdo.frecorder.util;
+package com.vdo.frecorder.util
 
 /**
- * Created on 22.03.2020.
- * @author Dimowner
+ * 文件拷贝进度回调。
  */
-public interface OnCopyListener {
-	boolean isCancel();
-	void onCopyProgress(int percent);
-	void onCanceled();
-	void onCopyFinish(String message);
-	void onError(String message);
+interface OnCopyListener {
+    val isCancel: Boolean
+    fun onCopyProgress(percent: Int)
+    fun onCanceled()
+    fun onCopyFinish(message: String?)
+    fun onError(message: String?)
 }

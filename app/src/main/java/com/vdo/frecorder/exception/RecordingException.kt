@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-package com.vdo.frecorder.exception;
+package com.vdo.frecorder.exception
 
-public class CantProcessRecord extends AppException {
-	@Override
-	public int getType() {
-		return AppException.CANT_PROCESS_RECORD;
-	}
+/** 录音过程出错。 */
+class RecordingException : AppException() {
+    override val type: Int
+        get() = AppException.RECORDING_ERROR
 }

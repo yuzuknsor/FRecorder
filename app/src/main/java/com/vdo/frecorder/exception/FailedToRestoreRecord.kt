@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-package com.vdo.frecorder.exception;
+package com.vdo.frecorder.exception
 
-public class RecordingException extends AppException {
-	@Override
-	public int getType() {
-		return AppException.RECORDING_ERROR;
-	}
+/** 恢复丢失的录音失败。 */
+class FailedToRestoreRecord : AppException() {
+    override val type: Int
+        get() = AppException.FAILED_TO_RESTORE
 }

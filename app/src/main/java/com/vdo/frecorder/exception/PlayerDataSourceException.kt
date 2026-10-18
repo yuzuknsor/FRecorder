@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-package com.vdo.frecorder.exception;
+package com.vdo.frecorder.exception
 
-public class NoSpaceAvailableException extends AppException {
-	@Override
-	public int getType() {
-		return AppException.NO_SPACE_AVAILABLE;
-	}
+/** 播放器数据源错误。 */
+class PlayerDataSourceException : AppException() {
+    override val type: Int
+        get() = AppException.PLAYER_DATA_SOURCE_EXCEPTION
 }

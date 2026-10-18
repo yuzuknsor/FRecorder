@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-package com.vdo.frecorder.exception;
+package com.vdo.frecorder.exception
 
-public class RecorderInitException extends AppException {
-	@Override
-	public int getType() {
-		return AppException.RECORDER_INIT_EXCEPTION;
-	}
+/** 无法创建输出文件。 */
+class CantCreateFileException : AppException() {
+    override val type: Int
+        get() = AppException.CANT_CREATE_FILE
 }

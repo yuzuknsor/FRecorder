@@ -134,9 +134,8 @@ class MoveRecordsService : Service() {
 						copyFile(File(sourceFilePath), destinationFile,
 							object : OnCopyListener {
 								var prevTime = 0L
-								override fun isCancel(): Boolean {
-									return isCancelMove
-								}
+								override val isCancel: Boolean
+									get() = isCancelMove
 
 								override fun onCopyProgress(p: Int) {
 									val curTime = System.currentTimeMillis()
@@ -157,14 +156,14 @@ class MoveRecordsService : Service() {
 									stopService()
 								}
 
-								override fun onCopyFinish(message: String) {
+								override fun onCopyFinish(message: String?) {
 									moveListener?.onRecordMoved()
 									copied++
 									copiedPercent += oneRecordProgress.toInt()
 									localRepository.updateRecord(record)
 									fileRepository.deleteRecordFile(sourceFilePath)
 									if (copied + failed == list.size) {
-										val text = getResultMessage(message, copied, failed, list.size)
+										val text = getResultMessage(message ?: "", copied, failed, list.size)
 										Toast.makeText(applicationContext, text, Toast.LENGTH_LONG).show()
 										moveListener?.onFinishMove()
 										if (!localRepository.hasRecordsWithPath(fileRepository.publicDir.absolutePath)) {
@@ -174,11 +173,11 @@ class MoveRecordsService : Service() {
 									}
 								}
 
-								override fun onError(message: String) {
+								override fun onError(message: String?) {
 									failed++
 									copiedPercent += oneRecordProgress.toInt()
 									if (copied + failed == list.size) {
-										val text = getResultMessage(message, copied, failed, list.size)
+										val text = getResultMessage(message ?: "", copied, failed, list.size)
 										Toast.makeText(applicationContext, text, Toast.LENGTH_LONG).show()
 										moveListener?.onFinishMove()
 										stopService()

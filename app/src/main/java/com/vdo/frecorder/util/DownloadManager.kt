@@ -48,7 +48,7 @@ fun downloadFiles(context: Context, list: List<File>, listener: OnCopyListListen
 		val size = f.length()/100f
 		listener?.onStartCopy(f.name)
 		val copyListener = object : OnCopyListener {
-			override fun isCancel(): Boolean = listener?.isCancel ?: false
+			override val isCancel: Boolean get() = listener?.isCancel ?: false
 
 			override fun onCopyProgress(percent: Int) {
 				val globalProgress = copiedPercent + (percent * size) / totalSize
@@ -59,7 +59,7 @@ fun downloadFiles(context: Context, list: List<File>, listener: OnCopyListListen
 				listener?.onCanceled()
 			}
 
-			override fun onCopyFinish(message: String) {
+			override fun onCopyFinish(message: String?) {
 				copied++
 				copiedPercent += ((size * 100) / totalSize).toInt()
 				if (copied + failed == list.size) {
@@ -77,7 +77,7 @@ fun downloadFiles(context: Context, list: List<File>, listener: OnCopyListListen
 				}
 			}
 
-			override fun onError(message: String) {
+			override fun onError(message: String?) {
 				failed++
 				if (copied + failed == list.size) {
 					if (list.size == 1) {
