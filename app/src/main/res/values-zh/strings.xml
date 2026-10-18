@@ -287,7 +287,7 @@
     <string name="mic_boost_12db">麦克风增益 +12 dB</string>
 
     <string name="credits">致谢</string>
-    <string name="credits_message"><![CDATA[<b>FRecorder</b> 基于 Dmytro Ponomarenko 的 <b>Audio Recorder</b>，遵循 Apache License 2.0。<br><br>原项目: <b>github.com/Dimowner/AudioRecorder</b>]]></string>
+    <string name="credits_message"><![CDATA[<b>FRecorder</b> 基于 Dmytro Ponomarenko 的 <b>Audio Recorder</b>，遵循 Apache License 2.0。<br><br>直接上游: <b>github.com/vdo/FRecorder</b><br>更早的源头: <b>github.com/Dimowner/AudioRecorder</b>]]></string>
 
     <!-- Shown in the 'About' window of the app. -->
     <string name="about_body"><![CDATA[
