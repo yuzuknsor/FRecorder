@@ -43,9 +43,9 @@ interface FileRepository {
 
     fun deleteRecordFile(path: String): Boolean
 
-    fun markAsTrashRecord(path: String): String
+    fun markAsTrashRecord(path: String): String?
 
-    fun unmarkTrashRecord(path: String): String
+    fun unmarkTrashRecord(path: String): String?
 
     fun deleteAllRecords(): Boolean
 

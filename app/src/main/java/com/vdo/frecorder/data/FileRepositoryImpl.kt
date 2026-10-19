@@ -89,14 +89,14 @@ class FileRepositoryImpl private constructor(context: Context, private val prefs
 		return FileUtil.deleteFile(File(path))
 	}
 
-	override fun markAsTrashRecord(path: String): String {
+	override fun markAsTrashRecord(path: String): String? {
 		val trashLocation = FileUtil.addExtension(path, AppConstants.TRASH_MARK_EXTENSION)
-		return if (FileUtil.renameFile(File(path), File(trashLocation))) trashLocation else path
+		return if (FileUtil.renameFile(File(path), File(trashLocation))) trashLocation else null
 	}
 
-	override fun unmarkTrashRecord(path: String): String {
+	override fun unmarkTrashRecord(path: String): String? {
 		val restoredFile = FileUtil.removeFileExtension(path)
-		return if (FileUtil.renameFile(File(path), File(restoredFile))) restoredFile else path
+		return if (FileUtil.renameFile(File(path), File(restoredFile))) restoredFile else null
 	}
 
 	override fun deleteAllRecords(): Boolean = false
