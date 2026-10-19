@@ -144,7 +144,8 @@ class ARApplication : Application() {
     private class RebootReceiver : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             if (intent?.action == Intent.ACTION_REBOOT || intent?.action == Intent.ACTION_SHUTDOWN) {
-                val appRecorder = injector.provideAppRecorder(context)
+                val ctx = context ?: return
+                val appRecorder = injector.provideAppRecorder(ctx)
                 val audioPlayer = injector.provideAudioPlayer()
                 appRecorder.stopRecording()
                 audioPlayer.stop()
