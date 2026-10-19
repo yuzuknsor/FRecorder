@@ -192,7 +192,7 @@ class MoveRecordsViewModel(
 					audioPlayer.stop()
 					prefs.activeRecord = id.toLong()
 					loadingTasks.postRunnable {
-						val record = localRepository.getRecord(id)
+						val record = localRepository.getRecord(id) ?: return@postRunnable
 
 						var activeItemPos = -1;
 						for ((index, rec) in uiState.value.list.withIndex()) {
@@ -235,7 +235,7 @@ class MoveRecordsViewModel(
 			PlayState.PAUSED -> audioPlayer.unpause()
 			PlayState.IDLE -> {
 				loadingTasks.postRunnable {
-					val record = localRepository.getRecord(uiState.value.activeRecordId)
+					val record = localRepository.getRecord(uiState.value.activeRecordId) ?: return@postRunnable
 					setPlayState(uiPlayState.value.copy(
 						playRecordName = record.name,
 						playRecordDuration = record.duration/1000,

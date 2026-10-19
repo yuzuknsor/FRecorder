@@ -29,15 +29,15 @@ interface LocalRepository {
 
     fun close()
 
-    fun getRecord(id: Int): Record
+    fun getRecord(id: Int): Record?
 
-    fun findRecordByPath(path: String): Record
+    fun findRecordByPath(path: String): Record?
 
     fun findRecordsByPath(path: String): MutableList<Record>
 
     fun hasRecordsWithPath(path: String): Boolean
 
-    fun getTrashRecord(id: Int): Record
+    fun getTrashRecord(id: Int): Record?
 
     fun getAllRecords(): MutableList<Record>
 
@@ -49,16 +49,16 @@ interface LocalRepository {
 
     fun deleteAllRecords(): Boolean
 
-    fun getLastRecord(): Record
+    fun getLastRecord(): Record?
 
-    fun insertRecord(record: Record): Record
+    fun insertRecord(record: Record): Record?
 
     fun updateRecord(record: Record): Boolean
 
     fun updateTrashRecord(record: Record): Boolean
 
     @Throws(IOException::class)
-    fun insertEmptyFile(filePath: String): Record
+    fun insertEmptyFile(filePath: String): Record?
 
     fun deleteRecord(id: Int): Boolean
 
