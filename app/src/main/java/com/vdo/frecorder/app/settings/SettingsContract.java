@@ -26,7 +26,7 @@ import java.util.List;
 
 public class SettingsContract {
 
-	interface View extends Contract.View {
+	public interface View extends Contract.View {
 
 		void showStoreInPublicDir(boolean b);
 
