@@ -20,7 +20,7 @@ import com.vdo.frecorder.Contract;
 
 public class SetupContract {
 
-	interface View extends Contract.View {
+	public interface View extends Contract.View {
 
 		void showRecordingBitrate(int bitrate);
 
