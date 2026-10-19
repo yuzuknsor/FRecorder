@@ -72,7 +72,7 @@ class FileRepositoryImpl private constructor(context: Context, private val prefs
 	}
 
 	override val publicDir: File
-		get() = FileUtil.getAppDir()
+		get() = FileUtil.getAppDir() ?: hardcodedPrivateDir()
 
 	override fun getPrivateDir(context: Context): File {
 		return try {
