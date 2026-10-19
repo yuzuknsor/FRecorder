@@ -4,7 +4,7 @@
 
 <p align="center"> <img src="logo.svg" width="128" alt="FRecorder logo"/> </p>
 
-**FRecorder** 是一款快速、直接的外景录音应用。可以舒适便捷地录制随想、速记，甚至承担一些简单的专业录制。
+**FRecorder** 是一款免费、开源、易用的外景录音应用。可以舒适便捷地录制随想、速记，甚至承担一些简单的专业录制。
 
 <p align="center">
   <img src="shot.jpg" width="300" alt="FRecorder 界面截图"/>
