@@ -148,7 +148,7 @@ class LocalRepositoryImpl private constructor(
 		if (!dataSource.isOpen) {
 			dataSource.open()
 		}
-		val list = dataSource.all
+		val list = dataSource.getAll()
 		checkForLostRecords(list)
 		return list
 	}
@@ -157,7 +157,7 @@ class LocalRepositoryImpl private constructor(
 		if (!dataSource.isOpen) {
 			dataSource.open()
 		}
-		return dataSource.allItemsIds
+		return dataSource.getAllItemsIds()
 	}
 
 	override fun getRecords(page: Int): MutableList<Record> {
@@ -248,7 +248,7 @@ class LocalRepositoryImpl private constructor(
 		if (!dataSource.isOpen) {
 			dataSource.open()
 		}
-		return dataSource.recordsDurations as MutableList<Long>
+		return dataSource.getRecordsDurations() as MutableList<Long>
 	}
 
 	override fun addToBookmarks(id: Int): Boolean {
@@ -294,14 +294,14 @@ class LocalRepositoryImpl private constructor(
 		if (!trashDataSource.isOpen) {
 			trashDataSource.open()
 		}
-		return trashDataSource.all
+		return trashDataSource.getAll()
 	}
 
 	override fun getTrashRecordsIds(): MutableList<Int> {
 		if (!trashDataSource.isOpen) {
 			trashDataSource.open()
 		}
-		return trashDataSource.allItemsIds
+		return trashDataSource.getAllItemsIds()
 	}
 
 	override fun getTrashRecordsCount(): Int {
@@ -371,7 +371,7 @@ class LocalRepositoryImpl private constructor(
 			trashDataSource.open()
 		}
 		val curTime = Date().time
-		val list = trashDataSource.all
+		val list = trashDataSource.getAll()
 		for (item in list) {
 			if (item.removed + AppConstants.RECORD_IN_TRASH_MAX_DURATION < curTime) {
 				fileRepository.deleteRecordFile(item.path)
