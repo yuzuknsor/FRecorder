@@ -24,7 +24,7 @@ import android.os.StatFs
 import android.provider.DocumentsContract
 import android.util.Log
 import com.vdo.frecorder.AppConstants
-import com.vdo.frecorder.AppConstants.SUPPORTED_EXT
+import com.vdo.frecorder.AppConstants.Companion.SUPPORTED_EXT
 import timber.log.Timber
 import java.io.BufferedInputStream
 import java.io.BufferedOutputStream

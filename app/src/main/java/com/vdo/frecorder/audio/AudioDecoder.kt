@@ -21,7 +21,7 @@ import android.media.MediaExtractor
 import android.media.MediaFormat
 import com.vdo.frecorder.ARApplication
 import com.vdo.frecorder.AppConstants
-import com.vdo.frecorder.AppConstants.SUPPORTED_EXT
+import com.vdo.frecorder.AppConstants.Companion.SUPPORTED_EXT
 import com.vdo.frecorder.IntArrayList
 import com.vdo.frecorder.app.info.RecordInfo
 import com.vdo.frecorder.util.FileUtil
@@ -225,7 +225,7 @@ object AudioDecoder {
 							decodeListener.onProcessingCancel()
 						} else {
 							decodeListener.onProcessingProgress(100)
-							decodeListener.onFinishProcessing(gains.data, duration)
+							decodeListener.onFinishProcessing(gains.getData(), duration)
 						}
 						codec.stop()
 						codec.release()

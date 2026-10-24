@@ -38,8 +38,8 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.vdo.frecorder.ARApplication
 import com.vdo.frecorder.AppConstants
-import com.vdo.frecorder.AppConstants.DECODE_DURATION
-import com.vdo.frecorder.AppConstants.PENDING_INTENT_FLAGS
+import com.vdo.frecorder.AppConstants.Companion.DECODE_DURATION
+import com.vdo.frecorder.AppConstants.Companion.PENDING_INTENT_FLAGS
 import com.vdo.frecorder.BackgroundQueue
 import com.vdo.frecorder.ColorMap
 import com.vdo.frecorder.R

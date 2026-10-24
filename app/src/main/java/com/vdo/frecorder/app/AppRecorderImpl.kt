@@ -13,7 +13,7 @@ package com.vdo.frecorder.app
 import android.media.AudioDeviceInfo
 import com.vdo.frecorder.ARApplication
 import com.vdo.frecorder.AppConstants
-import com.vdo.frecorder.AppConstants.PLAYBACK_VISUALIZATION_INTERVAL
+import com.vdo.frecorder.AppConstants.Companion.PLAYBACK_VISUALIZATION_INTERVAL
 import com.vdo.frecorder.BackgroundQueue
 import com.vdo.frecorder.IntArrayList
 import com.vdo.frecorder.app.info.RecordInfo
