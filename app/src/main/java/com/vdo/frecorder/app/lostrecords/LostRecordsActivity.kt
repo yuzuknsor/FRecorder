@@ -72,7 +72,7 @@ class LostRecordsActivity : Activity(), LostRecordsContract.View {
 		adapter = LostRecordsAdapter()
 		adapter.setOnItemClickListener(object : LostRecordsAdapter.OnItemClickListener {
 			override fun onItemClick(record: RecordItem) {
-				presenter?.onRecordInfo(Mapper.toRecordInfo(record))
+				presenter?.onRecordInfo(Mapper.toRecordInfo(record)!!)
 			}
 
 			override fun onRemoveItemClick(record: RecordItem) {

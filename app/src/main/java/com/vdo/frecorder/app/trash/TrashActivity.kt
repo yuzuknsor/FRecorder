@@ -78,7 +78,7 @@ class TrashActivity : Activity(), TrashContract.View {
 		adapter = TrashAdapter()
 		adapter.setOnItemClickListener(object : TrashAdapter.OnItemClickListener {
 			override fun onItemClick(record: RecordItem) {
-				presenter.onRecordInfo(Mapper.toRecordInfoInTrash(record))
+				presenter.onRecordInfo(Mapper.toRecordInfoInTrash(record)!!)
 			}
 
 			override fun onDeleteItemClick(record: RecordItem) {

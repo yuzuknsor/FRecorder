@@ -252,7 +252,7 @@ class RecordsActivity : Activity(), RecordsContract.View, View.OnClickListener {
 			if (menuId == R.id.menu_share) {
 				AndroidUtils.shareAudioFile(applicationContext, item.path, item.name, item.format)
 			} else if (menuId == R.id.menu_info) {
-				presenter.onRecordInfo(Mapper.toRecordInfo(item))
+				presenter.onRecordInfo(Mapper.toRecordInfo(item)!!)
 			} else if (menuId == R.id.menu_rename) {
 				setRecordName(item.id, item.name, item.format)
 			} else if (menuId == R.id.menu_open_with) {

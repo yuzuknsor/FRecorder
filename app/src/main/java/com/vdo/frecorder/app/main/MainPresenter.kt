@@ -640,7 +640,7 @@ class MainPresenter(
 			val record = recordDataSource.getActiveRecord()
 			if (record != null) {
 				AndroidUtils.runOnUIThread {
-					view?.showRecordInfo(Mapper.toRecordInfo(record))
+					view?.showRecordInfo(Mapper.toRecordInfo(record)!!)
 				}
 			}
 		}
