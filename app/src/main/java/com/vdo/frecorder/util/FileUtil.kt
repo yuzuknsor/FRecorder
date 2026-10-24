@@ -128,9 +128,10 @@ object FileUtil {
 	@Throws(IOException::class)
 	fun copyLarge(input: InputStream, output: OutputStream, buffer: ByteArray): Long {
 		var count = 0L
-		while (EOF != input.read(buffer)) {
-			output.write(buffer, 0, input.read(buffer))
-			count += buffer.size.toLong()
+		var n: Int
+		while (EOF != input.read(buffer).also { n = it }) {
+			output.write(buffer, 0, n)
+			count += n.toLong()
 		}
 		return count
 	}
