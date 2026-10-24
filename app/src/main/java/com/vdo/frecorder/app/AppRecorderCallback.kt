@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-package com.vdo.frecorder.app;
+package com.vdo.frecorder.app
 
-import com.vdo.frecorder.data.database.Record;
-import com.vdo.frecorder.exception.AppException;
+import com.vdo.frecorder.data.database.Record
+import com.vdo.frecorder.exception.AppException
+import java.io.File
 
-import java.io.File;
-
-public interface AppRecorderCallback {
-	void onRecordingStarted(File file);
-	void onRecordingPaused();
-	void onRecordingResumed();
-	void onRecordingStopped(File file, Record record);
-	void onRecordingProgress(long mills, int amp);
-	void onError(AppException throwable);
+/** 应用级录音器回调。Kotlin 化（原 AppRecorderCallback.java）。 */
+interface AppRecorderCallback {
+	fun onRecordingStarted(file: File)
+	fun onRecordingPaused()
+	fun onRecordingResumed()
+	fun onRecordingStopped(file: File, record: Record)
+	fun onRecordingProgress(mills: Long, amp: Int)
+	fun onError(throwable: AppException)
 }
