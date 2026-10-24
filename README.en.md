@@ -17,6 +17,7 @@
 - **Quick built-in-mic recording** — app-icon long-press entry (Settings → *Quick record with built-in microphone*), records with the built-in mic right away.
 - **Full Simplified Chinese localization** — every string translated.
 - **Reworked the howling-risk check for an explicitly selected built-in microphone**
+- **Full Kotlin conversion** — the entire codebase has been rewritten from Java to Kotlin (v1.0.0) with behavior kept identical.
 
 ## Features
 
@@ -24,7 +25,7 @@
 
 ## Disclaimer
 
-- The author of this fork is not a professional. The device-selection changes and the Chinese localization were made for personal use; no guarantee is given for anything else.
+- The author of this fork is not a professional. The device-selection changes, the Chinese localization and the full Kotlin conversion were made for personal use; no guarantee is given for anything else.
 
 ## Credits
 
