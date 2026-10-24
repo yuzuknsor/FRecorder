@@ -14,19 +14,14 @@
  * limitations under the License.
  */
 
-package com.vdo.frecorder.app.welcome;
+package com.vdo.frecorder.app.welcome
 
-import com.vdo.frecorder.Contract;
+import com.vdo.frecorder.Contract
 
-/**
- * Created on 04.04.2020.
- * @author Dimowner
- */
-public interface WelcomeContract {
+/** 欢迎页契约。Kotlin 化（原 WelcomeContract.java）。 */
+interface WelcomeContract {
 
-	interface View extends Contract.View {
-	}
+	interface View : Contract.View
 
-	interface UserActionsListener extends Contract.UserActionsListener<WelcomeContract.View> {
-	}
+	interface UserActionsListener : Contract.UserActionsListener<WelcomeContract.View>
 }
