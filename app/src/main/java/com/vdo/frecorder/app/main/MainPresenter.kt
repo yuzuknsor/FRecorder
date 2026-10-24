@@ -147,7 +147,7 @@ class MainPresenter(
 				override fun onRecordingProgress(mills: Long, amp: Int) {
 					val v = view ?: return
 					v.onRecordingProgress(mills, amp)
-					val recFile = appRecorder.recordFile
+					val recFile = appRecorder.getRecordFile()
 					val curTime = System.currentTimeMillis()
 					if (recFile != null && curTime - prevTime > 3000) { //录音期间定期刷新录音信息
 						updateInformation(
@@ -235,16 +235,16 @@ class MainPresenter(
 			v.showPlayStop()
 		}
 
-		if (appRecorder.isPaused) {
+		if (appRecorder.isPaused()) {
 			v.keepScreenOn(false)
 			v.showRecordingPause()
-			v.showRecordingProgress(TimeUtils.formatTimeIntervalHourMinSec2(appRecorder.recordingDuration))
-			v.updateRecordingView(appRecorder.recordingData, appRecorder.recordingDuration)
-		} else if (appRecorder.isRecording) {
+			v.showRecordingProgress(TimeUtils.formatTimeIntervalHourMinSec2(appRecorder.getRecordingDuration()))
+			v.updateRecordingView(appRecorder.getRecordingData(), appRecorder.getRecordingDuration())
+		} else if (appRecorder.isRecording()) {
 			v.showRecordingStart()
-			v.showRecordingProgress(TimeUtils.formatTimeIntervalHourMinSec2(appRecorder.recordingDuration))
+			v.showRecordingProgress(TimeUtils.formatTimeIntervalHourMinSec2(appRecorder.getRecordingDuration()))
 			v.keepScreenOn(prefs.isKeepScreenOn)
-			v.updateRecordingView(appRecorder.recordingData, appRecorder.recordingDuration)
+			v.updateRecordingView(appRecorder.getRecordingData(), appRecorder.getRecordingDuration())
 		} else {
 			v.showRecordingStop()
 			v.keepScreenOn(false)
@@ -304,9 +304,9 @@ class MainPresenter(
 	override fun pauseUnpauseRecording(context: Context) {
 		try {
 			if (fileRepository.hasAvailableSpace(context)) {
-				if (appRecorder.isPaused) {
+				if (appRecorder.isPaused()) {
 					appRecorder.resumeRecording()
-				} else if (appRecorder.isRecording) {
+				} else if (appRecorder.isRecording()) {
 					appRecorder.pauseRecording()
 				}
 			} else {
@@ -318,7 +318,7 @@ class MainPresenter(
 	}
 
 	override fun stopRecording() {
-		if (appRecorder.isRecording) {
+		if (appRecorder.isRecording()) {
 			view?.let { v ->
 				v.showProgress()
 				v.waveFormToStart()
@@ -460,7 +460,7 @@ class MainPresenter(
 	}
 
 	override fun loadActiveRecord() {
-		if (!appRecorder.isRecording) {
+		if (!appRecorder.isRecording()) {
 			view?.showProgress()
 			loadingTasks.postRunnable {
 				val rec = recordDataSource.getActiveRecord()

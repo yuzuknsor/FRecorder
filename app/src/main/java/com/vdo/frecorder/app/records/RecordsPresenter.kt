@@ -180,7 +180,7 @@ class RecordsPresenter(
 	}
 
 	override fun startPlayback() {
-		if (!appRecorder.isRecording) {
+		if (!appRecorder.isRecording()) {
 			val rec = activeRecord
 			if (rec != null) {
 				if (audioPlayer.isPlaying()) {
@@ -511,7 +511,7 @@ class RecordsPresenter(
 	}
 
 	override fun setActiveRecord(id: Long, callback: RecordsContract.Callback) {
-		if (id >= 0 && !appRecorder.isRecording) {
+		if (id >= 0 && !appRecorder.isRecording()) {
 			prefs.activeRecord = id
 			view?.showPanelProgress()
 			loadingTasks.postRunnable {

@@ -287,7 +287,7 @@ class AppRecorderImpl private constructor(
 
 	private fun onRecordingStopped(file: File, record: Record?) {
 		for (i in appCallbacks.indices.reversed()) {
-			appCallbacks[i].onRecordingStopped(file, record)
+			appCallbacks[i].onRecordingStopped(file, record!!)
 		}
 	}
 

@@ -86,7 +86,7 @@ class MoveRecordsViewModel(
 				}
 			}
 			when {
-				appRecorder.isRecording -> {
+				appRecorder.isRecording() -> {
 					setState(uiState.value.copy(playState = PlayState.RECORDING))
 				}
 				audioPlayer.isPlaying() -> {

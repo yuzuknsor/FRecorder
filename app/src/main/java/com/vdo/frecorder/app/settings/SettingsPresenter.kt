@@ -208,7 +208,7 @@ class SettingsPresenter(
 				override fun onRecordingStarted(file: File) {}
 				override fun onRecordingPaused() {}
 				override fun onRecordingResumed() {}
-				override fun onRecordingStopped(file: File, record: Record?) {
+				override fun onRecordingStopped(file: File, record: Record) {
 					view.enableAudioSettings()
 				}
 				override fun onRecordingProgress(mills: Long, amp: Int) {}

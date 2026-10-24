@@ -56,7 +56,7 @@ class FileBrowserPresenter(
 				override fun onRecordingStarted(file: File) {}
 				override fun onRecordingPaused() {}
 				override fun onRecordingResumed() {}
-				override fun onRecordingStopped(file: File, record: Record?) {}
+				override fun onRecordingStopped(file: File, record: Record) {}
 				override fun onRecordingProgress(mills: Long, amp: Int) {}
 				override fun onError(throwable: AppException) {
 					Timber.e(throwable)
