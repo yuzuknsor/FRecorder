@@ -259,10 +259,8 @@
 
 	<string name="quick_mic_entry">Quick record with built-in microphone</string>
 	<string name="quick_mic_title">Built-in mic</string>
-	<string name="quick_mic_description">Always uses the phone\'s built-in microphone,
-avoids the headset microphone.
-If your headset has no microphone at all,
-so much the better.</string>
+	<string name="quick_mic_description">Always uses the built-in microphone
+whether or not a headset is plugged in</string>
 	<string name="quick_mic_device">Recording input: %s</string>
 	<string name="quick_mic_device_missing">No built-in microphone reported by the system — falling back to the system default input.</string>
 	<string name="quick_mic_start">Start recording</string>
