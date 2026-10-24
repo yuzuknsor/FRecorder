@@ -14,28 +14,29 @@
  * limitations under the License.
  */
 
-package com.vdo.frecorder;
+package com.vdo.frecorder
 
-public interface Contract {
+/** MVP 各页共用契约。Kotlin 化（原 Contract.java）。 */
+interface Contract {
 
 	interface View {
-		void showProgress();
+		fun showProgress()
 
-		void hideProgress();
+		fun hideProgress()
 
-		void showError(String message);
+		fun showError(message: String)
 
-		void showError(int resId);
+		fun showError(resId: Int)
 
-		void showMessage(int resId);
+		fun showMessage(resId: Int)
 	}
 
-	interface UserActionsListener<T extends View> {
+	interface UserActionsListener<T : View> {
 
-		void bindView(T view);
+		fun bindView(view: T)
 
-		void unbindView();
+		fun unbindView()
 
-		void clear();
+		fun clear()
 	}
 }
